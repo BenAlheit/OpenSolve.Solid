@@ -1,8 +1,4 @@
-import fenics as fe
-from .problems import StationaryProblem
 from .step import Step
-from ..solid_mechanics.constiutive_model import ConstitutiveModelBase
-from ..solid_mechanics import kinnematics as kin
 
 
 class SolidMechanicsSolver(object):

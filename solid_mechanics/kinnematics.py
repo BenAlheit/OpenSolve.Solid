@@ -2,12 +2,12 @@ import fenics as fe
 
 
 def identity(u):
-    return fe.Identity(u.cell().dim)
+    return fe.Identity(u.ufl_shape[0])
 
 
 def def_grad(u):
     # TODO: Check dim is correct
-    I = fe.Identity(u.cell().dim)
+    I = fe.Identity(u.ufl_shape[0])
     return I + fe.grad(u)
 
 

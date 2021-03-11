@@ -1,6 +1,6 @@
 import fenics as fe
-from ..solid_mechanics.constiutive_model import ConstitutiveModelBase
-from ..solid_mechanics import kinnematics as kin
+from solid_mechanics.constiutive_model import ConstitutiveModelBase
+from solid_mechanics import kinnematics as kin
 from abc import ABC, abstractmethod
 
 

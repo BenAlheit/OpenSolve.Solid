@@ -14,8 +14,9 @@ class ConstitutiveModelBase(ABC):
         raise NotImplementedError
 
     def stress(self, u):
-        C = kin.right_cauchy_green(u)
-        return 2 * fe.diff(self.strain_energy(u), C)
+        u_var = fe.variable(u)
+        C = fe.variable(kin.right_cauchy_green(u_var))
+        return 2 * fe.diff(self.strain_energy(u_var), C)
 
     # @abstractmethod
     # def tangent(self):
@@ -31,3 +32,10 @@ class NeoHookean(ConstitutiveModelBase):
         C = kin.right_cauchy_green(u)
         I1 = fe.tr(C)
         return self._parameters['mu'] * (I1 - fe.Constant(3.))
+
+    def stress(self, u):
+        E = kin.green_lagrange_strain(u)
+        I = kin.identity(u)
+
+        return self._parameters['lambda'] * fe.tr(E) * I + 2 * self._parameters['mu'] * E
+

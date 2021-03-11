@@ -39,3 +39,4 @@ solver.solve()
 # TODO Implement UP
 # TODO Add viscoelasticity
 # TODO Add anisotropy
+# TODO restarts at some point in the future?

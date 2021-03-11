@@ -115,6 +115,7 @@ class StaticStep(Step):
             t += self.dt.dt
             self.update_time(t)
             self.solver.solve()
+            self._domain.write_outputs(t)
             self._domain.update_values()
 
 

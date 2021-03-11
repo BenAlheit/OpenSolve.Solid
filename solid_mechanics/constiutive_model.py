@@ -23,19 +23,34 @@ class ConstitutiveModelBase(ABC):
     #     raise NotImplementedError
 
 
-class NeoHookean(ConstitutiveModelBase):
+class StVenant(ConstitutiveModelBase):
 
     def __init__(self, parameters):
         super().__init__(parameters)
 
     def strain_energy(self, u):
-        C = kin.right_cauchy_green(u)
-        I1 = fe.tr(C)
-        return self._parameters['mu'] * (I1 - fe.Constant(3.))
+        pass
 
     def stress(self, u):
         E = kin.green_lagrange_strain(u)
         I = kin.identity(u)
 
         return self._parameters['lambda'] * fe.tr(E) * I + 2 * self._parameters['mu'] * E
+
+
+# class NeoHookean(ConstitutiveModelBase):
+#
+#     def __init__(self, parameters):
+#         super().__init__(parameters)
+#
+#     def strain_energy(self, u):
+#         C = kin.right_cauchy_green(u)
+#         I1 = fe.tr(C)
+#         return self._parameters['mu'] * (I1 - fe.Constant(3.))
+#
+#     def stress(self, u):
+#         E = kin.green_lagrange_strain(u)
+#         I = kin.identity(u)
+#
+#         return self._parameters['lambda'] * fe.tr(E) * I + 2 * self._parameters['mu'] * E
 

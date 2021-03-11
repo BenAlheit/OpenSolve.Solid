@@ -3,6 +3,7 @@ from solid_mechanics.constiutive_model import ConstitutiveModelBase
 from abc import abstractmethod, ABC
 from solid_mechanics import kinnematics as kin
 
+
 class Domain(ABC):
     def __init__(self,
                  mesh: fe.Mesh,
@@ -14,6 +15,7 @@ class Domain(ABC):
         self._constitutive_model = constitutive_model
         self.V = function_space
         self._bf = bf
+        self.w = None
 
     @property
     def constitutive_model(self):

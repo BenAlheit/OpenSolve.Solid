@@ -37,3 +37,4 @@ solver.solve()
 # TODO fix time parameter issue
 # TODO fix automatic differentiation of strain energy functions
 # TODO Implement UP
+# TODO Verify StVernant material model

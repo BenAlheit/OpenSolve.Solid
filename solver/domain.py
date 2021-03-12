@@ -26,6 +26,9 @@ class Domain(ABC):
         self._mesh = mesh
         self._constitutive_model = constitutive_model
         self.V = function_space
+        self.T = fe.TensorFunctionSpace(mesh, "P", 1)
+        self.S = fe.FunctionSpace(mesh, "P", 1)
+
         self._bf = bf
         self.w = None
         self._outputs = outputs
@@ -51,12 +54,14 @@ class UDomain(Domain):
                  mesh: fe.Mesh,
                  constitutive_model: ConstitutiveModelBase,
                  density: fe.Expression = fe.Expression('0', degree=0),
-                 bf: fe.Expression = fe.Expression('0', degree=0)):
+                 bf: fe.Expression = fe.Expression('0', degree=0),
+                 user_output_fn: callable = None):
 
         W = fe.VectorFunctionSpace(mesh, "P", 1)
-        self.T = fe.TensorFunctionSpace(mesh, "P", 1)
         super().__init__(mesh, constitutive_model, W, bf)
         self._density = density
+
+        self.user_output_fn = user_output_fn
 
         # Unknowns, values at previous step and test functions
         self.w = fe.Function(W)
@@ -83,6 +88,10 @@ class UDomain(Domain):
         self.F0 = kin.def_grad(self.u0)
 
     def write_outputs(self, t):
+
+        if self.user_output_fn is not None:
+            self.user_output_fn(self, t)
+
         for output in self._outputs:
             self.output_fn_map[output](self._output_files[output], t)
 
@@ -104,3 +113,17 @@ class UDomain(Domain):
     @property
     def constitutive_model(self):
         return self._constitutive_model
+
+
+class PDomain(Domain):
+
+    def __init__(self,
+                 mesh,
+                 constiutive_model):
+        pass
+
+
+class UPDomain(UDomain, PDomain):
+
+    def __init__(self, mesh: fe.Mesh, constitutive_model: ConstitutiveModelBase):
+        super().__init__(mesh, constitutive_model)

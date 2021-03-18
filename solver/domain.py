@@ -119,11 +119,56 @@ class PDomain(Domain):
 
     def __init__(self,
                  mesh,
-                 constiutive_model):
-        pass
+                 constitutive_model):
+
+        W = fe.FunctionSpace(mesh, "DG", 1)
+        super().__init__(mesh, constitutive_model, W)
+
+        self.w = fe.Function(W)
+        self.p, self.p0 = self.w, fe.Function(W)
+
+        self.g = fe.TestFunction(W)
+
+        self.functional = fe.inner(self.p, self.g) - fe.inner(self.constitutive_model)
 
 
 class UPDomain(UDomain, PDomain):
 
-    def __init__(self, mesh: fe.Mesh, constitutive_model: ConstitutiveModelBase):
+    def __init__(self, mesh: fe.Mesh, constitutive_model: ConstitutiveModelBase, u_order=1, p_order=0):
+
+        # TODO a lot here...
+
+        element_v = fe.VectorElement("P", mesh.ufl_cell(), u_order)
+        element_s = fe.FiniteElement("DG", mesh.ufl_cell(), p_order)
+        mixed_element = fe.MixedElement([element_v, element_v, element_s])
+
+        W = fe.FunctionSpace(mesh, mixed_element)
+
+        w = fe.Function(W)
+        u, v, p = fe.split(w)
+        w0 = fe.Function(W)
+        u0, v0, p0 = fe.split(w0)
+        ut, vt, pt = fe.TestFunctions(W)
+
+
+        F = kin.def_grad(self.u)
+        F0 = kin.def_grad(self.u0)
+
+        S_iso = constitutive_model.iso_stress(u)
+        mod_p = constitutive_model.p(u)
+        J = fe.det(F)
+        F_inv = fe.inv(F)
+
+        if mod_p is None:
+            mod_p = J - 1.
+            S = S_iso
+        else:
+
+            S = S_iso + J * mod_p * F_inv * F_inv.T
+
+
+        self.d_LHS = fe.inner(self.F * constitutive_model.iso_stress(u), fe.grad(ut)) * fe.dx \
+                     + fe.inner(p, fe.tr(fe.nabla_grad(ut)*fe.inv(F)))
+
+
         super().__init__(mesh, constitutive_model)

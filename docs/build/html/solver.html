@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>solver package &mdash; OpenSolve.Solid 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="solid_mechanics package" href="solid_mechanics.html" />
+    <link rel="prev" title="solver" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> OpenSolve.Solid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">solver</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">solver package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver.boundary_condition">solver.boundary_condition module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver.domain">solver.domain module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver.problems">solver.problems module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver.solver">solver.solver module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver.space_generators">solver.space_generators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver.step">solver.step module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-solver">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#solid-mechanics">solid_mechanics</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenSolve.Solid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">solver</a> &raquo;</li>
+        
+      <li>solver package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/solver.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="solver-package">
+<h1>solver package<a class="headerlink" href="#solver-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-solver.boundary_condition">
+<span id="solver-boundary-condition-module"></span><h2>solver.boundary_condition module<a class="headerlink" href="#module-solver.boundary_condition" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="solver.boundary_condition.DirichletBC">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.boundary_condition.</span></code><code class="sig-name descname"><span class="pre">DirichletBC</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/boundary_condition.html#DirichletBC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.boundary_condition.DirichletBC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.domain">
+<span id="solver-domain-module"></span><h2>solver.domain module<a class="headerlink" href="#module-solver.domain" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="solver.domain.Domain">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.domain.</span></code><code class="sig-name descname"><span class="pre">Domain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mesh:</span> <span class="pre">dolfin.cpp.mesh.Mesh,</span> <span class="pre">constitutive_model:</span> <span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase,</span> <span class="pre">function_space:</span> <span class="pre">dolfin.function.functionspace.FunctionSpace,</span> <span class="pre">bf:</span> <span class="pre">dolfin.function.expression.Expression</span> <span class="pre">=</span> <span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Discontinuous</span> <span class="pre">Lagrange',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">0),</span> <span class="pre">outputs:</span> <span class="pre">[&lt;enum</span> <span class="pre">'Outputs'&gt;]</span> <span class="pre">=</span> <span class="pre">[&lt;Outputs.stress:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;Outputs.strain:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;Outputs.displacement:</span> <span class="pre">3&gt;]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#Domain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.Domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py attribute">
+<dt id="solver.domain.Domain.DEFAULT_OUTPUTS">
+<code class="sig-name descname"><span class="pre">DEFAULT_OUTPUTS</span></code><em class="property"><span class="pre">:</span> <span class="pre">[&lt;enum</span> <span class="pre">‘Outputs’&gt;]</span></em><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;Outputs.stress:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;Outputs.strain:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;Outputs.displacement:</span> <span class="pre">3&gt;]</span></em><a class="headerlink" href="#solver.domain.Domain.DEFAULT_OUTPUTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.Domain.constitutive_model">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">constitutive_model</span></code><a class="headerlink" href="#solver.domain.Domain.constitutive_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.Domain.update_values">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">update_values</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#Domain.update_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.Domain.update_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.Domain.write_outputs">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">write_outputs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#Domain.write_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.Domain.write_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.domain.Outputs">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.domain.</span></code><code class="sig-name descname"><span class="pre">Outputs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#Outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.Outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="solver.domain.Outputs.displacement">
+<code class="sig-name descname"><span class="pre">displacement</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#solver.domain.Outputs.displacement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="solver.domain.Outputs.strain">
+<code class="sig-name descname"><span class="pre">strain</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#solver.domain.Outputs.strain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="solver.domain.Outputs.stress">
+<code class="sig-name descname"><span class="pre">stress</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#solver.domain.Outputs.stress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.domain.PDomain">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.domain.</span></code><code class="sig-name descname"><span class="pre">PDomain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#PDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.PDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#solver.domain.Domain" title="solver.domain.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">solver.domain.Domain</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.domain.UDomain">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.domain.</span></code><code class="sig-name descname"><span class="pre">UDomain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Discontinuous</span> <span class="pre">Lagrange',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Discontinuous</span> <span class="pre">Lagrange',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_output_fn</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#solver.domain.Domain" title="solver.domain.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">solver.domain.Domain</span></code></a></p>
+<dl class="py method">
+<dt id="solver.domain.UDomain.constitutive_model">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">constitutive_model</span></code><a class="headerlink" href="#solver.domain.UDomain.constitutive_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UDomain.density">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">density</span></code><a class="headerlink" href="#solver.domain.UDomain.density" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UDomain.update_values">
+<code class="sig-name descname"><span class="pre">update_values</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UDomain.update_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UDomain.update_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UDomain.write_outputs">
+<code class="sig-name descname"><span class="pre">write_outputs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UDomain.write_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UDomain.write_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UDomain.write_strain">
+<code class="sig-name descname"><span class="pre">write_strain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.io.XDMFFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UDomain.write_strain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UDomain.write_strain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UDomain.write_stress">
+<code class="sig-name descname"><span class="pre">write_stress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.io.XDMFFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UDomain.write_stress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UDomain.write_stress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UDomain.write_u">
+<code class="sig-name descname"><span class="pre">write_u</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.io.XDMFFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UDomain.write_u"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UDomain.write_u" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.domain.UPDomain">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.domain.</span></code><code class="sig-name descname"><span class="pre">UPDomain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UPDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UPDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>!</dt><dd><p>Discretize</p>
+</dd>
+</dl>
+<p>$m{0}
+$</p>
+<dl class="py method">
+<dt id="solver.domain.UPDomain.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UPDomain.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UPDomain.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>!
+blah blah blha</p>
+<p>&#64;param mesh:
+&#64;param constitutive_model:
+&#64;param u_order:
+&#64;param p_order:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="solver.domain.UPDomain.some_method">
+<code class="sig-name descname"><span class="pre">some_method</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/domain.html#UPDomain.some_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.domain.UPDomain.some_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>!
+Hiiii
+&#64;return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.problems">
+<span id="solver-problems-module"></span><h2>solver.problems module<a class="headerlink" href="#module-solver.problems" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="solver.problems.StationaryProblem">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.problems.</span></code><code class="sig-name descname"><span class="pre">StationaryProblem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Discontinuous</span> <span class="pre">Lagrange',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">3)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/problems.html#StationaryProblem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.problems.StationaryProblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt id="solver.problems.StationaryProblem.constitutive_model">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">constitutive_model</span></code><a class="headerlink" href="#solver.problems.StationaryProblem.constitutive_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.problems.StationaryProblem.density">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">density</span></code><a class="headerlink" href="#solver.problems.StationaryProblem.density" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.problems.StationaryProblem.update_values">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">update_values</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/problems.html#StationaryProblem.update_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.problems.StationaryProblem.update_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.problems.UPStationaryProblem">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.problems.</span></code><code class="sig-name descname"><span class="pre">UPStationaryProblem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Discontinuous</span> <span class="pre">Lagrange',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">5)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/problems.html#UPStationaryProblem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.problems.UPStationaryProblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="solver.problems.UPStationaryProblem.constitutive_model">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">constitutive_model</span></code><a class="headerlink" href="#solver.problems.UPStationaryProblem.constitutive_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.problems.UPStationaryProblem.density">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">density</span></code><a class="headerlink" href="#solver.problems.UPStationaryProblem.density" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.problems.UStationaryProblem">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.problems.</span></code><code class="sig-name descname"><span class="pre">UStationaryProblem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Discontinuous</span> <span class="pre">Lagrange',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">4)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/problems.html#UStationaryProblem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.problems.UStationaryProblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#solver.problems.StationaryProblem" title="solver.problems.StationaryProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">solver.problems.StationaryProblem</span></code></a></p>
+<dl class="py method">
+<dt id="solver.problems.UStationaryProblem.constitutive_model">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">constitutive_model</span></code><a class="headerlink" href="#solver.problems.UStationaryProblem.constitutive_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.problems.UStationaryProblem.density">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">density</span></code><a class="headerlink" href="#solver.problems.UStationaryProblem.density" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.problems.UStationaryProblem.update_values">
+<code class="sig-name descname"><span class="pre">update_values</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/problems.html#UStationaryProblem.update_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.problems.UStationaryProblem.update_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.solver">
+<span id="solver-solver-module"></span><h2>solver.solver module<a class="headerlink" href="#module-solver.solver" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="solver.solver.SolidMechanicsSolver">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.solver.</span></code><code class="sig-name descname"><span class="pre">SolidMechanicsSolver</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">steps:</span> <span class="pre">[&lt;class</span> <span class="pre">'solver.step.Step'&gt;]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/solver.html#SolidMechanicsSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.solver.SolidMechanicsSolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="solver.solver.SolidMechanicsSolver.solve">
+<code class="sig-name descname"><span class="pre">solve</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/solver.html#SolidMechanicsSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.solver.SolidMechanicsSolver.solve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.space_generators">
+<span id="solver-space-generators-module"></span><h2>solver.space_generators module<a class="headerlink" href="#module-solver.space_generators" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="solver.space_generators.Vector">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.space_generators.</span></code><code class="sig-name descname"><span class="pre">Vector</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'P'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/space_generators.html#Vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.space_generators.Vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.step">
+<span id="solver-step-module"></span><h2>solver.step module<a class="headerlink" href="#module-solver.step" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="solver.step.ImplicitStep">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.step.</span></code><code class="sig-name descname"><span class="pre">ImplicitStep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#solver.domain.Domain" title="solver.domain.Domain"><span class="pre">solver.domain.Domain</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_end</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.expression.Expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.function.constant.Constant</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">Coefficient(FunctionSpace(None,</span> <span class="pre">FiniteElement('Real',</span> <span class="pre">None,</span> <span class="pre">0)),</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dolfin.function.expression.Expression</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dolfin.function.expression.Expression</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dolfin.function.expression.Expression</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#ImplicitStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.ImplicitStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#solver.step.Step" title="solver.step.Step"><code class="xref py py-class docutils literal notranslate"><span class="pre">solver.step.Step</span></code></a></p>
+<dl class="py method">
+<dt id="solver.step.ImplicitStep.construct_functionals">
+<code class="sig-name descname"><span class="pre">construct_functionals</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#ImplicitStep.construct_functionals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.ImplicitStep.construct_functionals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.ImplicitStep.create_step_functionals">
+<code class="sig-name descname"><span class="pre">create_step_functionals</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#ImplicitStep.create_step_functionals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.ImplicitStep.create_step_functionals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.ImplicitStep.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#ImplicitStep.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.ImplicitStep.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.ImplicitStep.setup_solver">
+<code class="sig-name descname"><span class="pre">setup_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#ImplicitStep.setup_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.ImplicitStep.setup_solver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.ImplicitStep.stationary_problem">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">stationary_problem</span></code><a class="headerlink" href="#solver.step.ImplicitStep.stationary_problem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.step.StaticStep">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.step.</span></code><code class="sig-name descname"><span class="pre">StaticStep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">domain:</span> <span class="pre">solver.domain.Domain,</span> <span class="pre">dbcs:</span> <span class="pre">[&lt;class</span> <span class="pre">'dolfin.fem.dirichletbc.DirichletBC'&gt;],</span> <span class="pre">t_start:</span> <span class="pre">float,</span> <span class="pre">t_end:</span> <span class="pre">float,</span> <span class="pre">dt0:</span> <span class="pre">dolfin.function.expression.Expression,</span> <span class="pre">expressions:</span> <span class="pre">[&lt;class</span> <span class="pre">'dolfin.function.expression.Expression'&gt;]</span> <span class="pre">=</span> <span class="pre">[],</span> <span class="pre">u0:</span> <span class="pre">Optional[dolfin.function.expression.Expression]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">solver_parameters=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#StaticStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.StaticStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#solver.step.Step" title="solver.step.Step"><code class="xref py py-class docutils literal notranslate"><span class="pre">solver.step.Step</span></code></a></p>
+<dl class="py method">
+<dt id="solver.step.StaticStep.create_step_functionals">
+<code class="sig-name descname"><span class="pre">create_step_functionals</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#StaticStep.create_step_functionals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.StaticStep.create_step_functionals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.StaticStep.domain">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">domain</span></code><a class="headerlink" href="#solver.step.StaticStep.domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.StaticStep.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#StaticStep.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.StaticStep.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="solver.step.Step">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.step.</span></code><code class="sig-name descname"><span class="pre">Step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dt0:</span> <span class="pre">dolfin.function.expression.Expression,</span> <span class="pre">dbcs:</span> <span class="pre">[&lt;class</span> <span class="pre">'dolfin.fem.dirichletbc.DirichletBC'&gt;],</span> <span class="pre">domain:</span> <span class="pre">solver.domain.Domain,</span> <span class="pre">expressions:</span> <span class="pre">[&lt;class</span> <span class="pre">'dolfin.function.expression.Expression'&gt;],</span> <span class="pre">solver_parameters=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#Step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.Step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py attribute">
+<dt id="solver.step.Step.DEFAULT_SOLVER_PARAMETERS">
+<code class="sig-name descname"><span class="pre">DEFAULT_SOLVER_PARAMETERS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'newton_solver':</span> <span class="pre">{'linear_solver':</span> <span class="pre">'cg',</span> <span class="pre">'preconditioner':</span> <span class="pre">'ilu',</span> <span class="pre">'relative_tolerance':</span> <span class="pre">1e-06}}</span></em><a class="headerlink" href="#solver.step.Step.DEFAULT_SOLVER_PARAMETERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.Step.bcs">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bcs</span></code><a class="headerlink" href="#solver.step.Step.bcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.Step.dt">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dt</span></code><a class="headerlink" href="#solver.step.Step.dt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.Step.run">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#Step.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.Step.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.Step.setup_solver">
+<code class="sig-name descname"><span class="pre">setup_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#Step.setup_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.Step.setup_solver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="solver.step.Step.update_time">
+<code class="sig-name descname"><span class="pre">update_time</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solver/step.html#Step.update_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solver.step.Step.update_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-solver" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="solid_mechanics.html" class="btn btn-neutral float-right" title="solid_mechanics package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="solver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Benjamin Alheit.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

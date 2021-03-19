@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>solver.problems &mdash; OpenSolve.Solid 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> OpenSolve.Solid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#solid-mechanics">solid_mechanics</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenSolve.Solid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>solver.problems</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for solver.problems</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">fenics</span> <span class="k">as</span> <span class="nn">fe</span>
+<span class="kn">from</span> <span class="nn">solid_mechanics.constiutive_model</span> <span class="kn">import</span> <span class="n">ConstitutiveModelBase</span>
+<span class="kn">from</span> <span class="nn">solid_mechanics</span> <span class="kn">import</span> <span class="n">kinnematics</span> <span class="k">as</span> <span class="n">kin</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+
+<div class="viewcode-block" id="StationaryProblem"><a class="viewcode-back" href="../../solver.html#solver.problems.StationaryProblem">[docs]</a><span class="k">class</span> <span class="nc">StationaryProblem</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">mesh</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Mesh</span><span class="p">,</span>
+                 <span class="n">density</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">,</span>
+                 <span class="n">constitutive_model</span><span class="p">:</span> <span class="n">ConstitutiveModelBase</span><span class="p">,</span>
+                 <span class="n">bf</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">)):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="o">=</span> <span class="n">mesh</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_density</span> <span class="o">=</span> <span class="n">density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_constitutive_model</span> <span class="o">=</span> <span class="n">constitutive_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bf</span> <span class="o">=</span> <span class="n">bf</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_density</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">constitutive_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constitutive_model</span>
+
+<div class="viewcode-block" id="StationaryProblem.update_values"><a class="viewcode-back" href="../../solver.html#solver.problems.StationaryProblem.update_values">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">update_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
+
+
+<div class="viewcode-block" id="UStationaryProblem"><a class="viewcode-back" href="../../solver.html#solver.problems.UStationaryProblem">[docs]</a><span class="k">class</span> <span class="nc">UStationaryProblem</span><span class="p">(</span><span class="n">StationaryProblem</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">mesh</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Mesh</span><span class="p">,</span>
+                 <span class="n">density</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">,</span>
+                 <span class="n">constitutive_model</span><span class="p">:</span> <span class="n">ConstitutiveModelBase</span><span class="p">,</span>
+                 <span class="n">bf</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">)):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">constitutive_model</span><span class="p">,</span> <span class="n">bf</span><span class="p">)</span>
+
+        <span class="n">W</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">VectorFunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Unknowns, values at previous step and test functions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a0</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+
+        <span class="c1"># self.a0 = fe.Function(fe.FunctionSpace(mesh, element_v))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ut</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">kin</span><span class="o">.</span><span class="n">def_grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">F0</span> <span class="o">=</span> <span class="n">kin</span><span class="o">.</span><span class="n">def_grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u0</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UStationaryProblem.update_values"><a class="viewcode-back" href="../../solver.html#solver.problems.UStationaryProblem.update_values">[docs]</a>    <span class="k">def</span> <span class="nf">update_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">u0</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v0</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a0</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">F0</span> <span class="o">=</span> <span class="n">kin</span><span class="o">.</span><span class="n">def_grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u0</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_density</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">constitutive_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constitutive_model</span></div>
+
+
+<div class="viewcode-block" id="UPStationaryProblem"><a class="viewcode-back" href="../../solver.html#solver.problems.UPStationaryProblem">[docs]</a><span class="k">class</span> <span class="nc">UPStationaryProblem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">mesh</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Mesh</span><span class="p">,</span>
+                 <span class="n">density</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">,</span>
+                 <span class="n">constitutive_model</span><span class="p">:</span> <span class="n">ConstitutiveModelBase</span><span class="p">,</span>
+                 <span class="n">bf</span><span class="p">:</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">)):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="o">=</span> <span class="n">mesh</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_density</span> <span class="o">=</span> <span class="n">density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_constitutive_model</span> <span class="o">=</span> <span class="n">constitutive_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bf</span> <span class="o">=</span> <span class="n">bf</span>
+
+        <span class="n">element_v</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">element_s</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">FiniteElement</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mixed_element</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">MixedElement</span><span class="p">([</span><span class="n">element_v</span><span class="p">,</span> <span class="n">element_v</span><span class="p">,</span> <span class="n">element_s</span><span class="p">])</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mixed_element</span><span class="p">)</span>
+
+        <span class="c1"># Unknowns, values at previous step and test functions</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+        <span class="n">w0</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p0</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">w0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a0</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">element_v</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ut</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pt</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">TestFunctions</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">kin</span><span class="o">.</span><span class="n">def_grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">F0</span> <span class="o">=</span> <span class="n">kin</span><span class="o">.</span><span class="n">def_grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u0</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_density</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">constitutive_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constitutive_model</span></div>
+
+
+<span class="c1"># class StationaryProblem(ABC):</span>
+<span class="c1">#</span>
+<span class="c1">#     def __init__(self,</span>
+<span class="c1">#                  mesh: fe.Mesh,</span>
+<span class="c1">#                  density: fe.Expression,</span>
+<span class="c1">#                  constitutive_model: ConstitutiveModelBase,</span>
+<span class="c1">#                  bf: fe.Expression = fe.Expression(&#39;0&#39;, degree=0)):</span>
+<span class="c1">#         self._mesh = mesh</span>
+<span class="c1">#         self._density = density</span>
+<span class="c1">#         self._constitutive_model = constitutive_model</span>
+<span class="c1">#         self.bf = bf</span>
+<span class="c1">#</span>
+<span class="c1">#         element_v = fe.VectorElement(&quot;P&quot;, mesh.ufl_cell(), 1)</span>
+<span class="c1">#         element_s = fe.FiniteElement(&quot;P&quot;, mesh.ufl_cell(), 1)</span>
+<span class="c1">#         mixed_element = fe.MixedElement([element_v, element_v, element_s])</span>
+<span class="c1">#         W = fe.FunctionSpace(mesh, mixed_element)</span>
+<span class="c1">#</span>
+<span class="c1">#         # Unknowns, values at previous step and test functions</span>
+<span class="c1">#         self.w = fe.Function(W)</span>
+<span class="c1">#         self.u, self.v, self.p = fe.split(self.w)</span>
+<span class="c1">#</span>
+<span class="c1">#         w0 = fe.Function(W)</span>
+<span class="c1">#         self.u0, self.v0, self.p0 = fe.split(w0)</span>
+<span class="c1">#         self.a0 = fe.Function(fe.FunctionSpace(mesh, element_v))</span>
+<span class="c1">#</span>
+<span class="c1">#         self.ut, self.vt, self.pt = fe.TestFunctions(W)</span>
+<span class="c1">#</span>
+<span class="c1">#         self.F = kin.F(self.u)</span>
+<span class="c1">#         self.F0 = kin.F(self.u0)</span>
+<span class="c1">#</span>
+<span class="c1">#     @property</span>
+<span class="c1">#     def density(self):</span>
+<span class="c1">#         return self._density</span>
+<span class="c1">#</span>
+<span class="c1">#     @property</span>
+<span class="c1">#     def constitutive_model(self):</span>
+<span class="c1">#         return self._constitutive_model</span>
+<span class="c1">#</span>
+<span class="c1">#     @abstractmethod</span>
+<span class="c1">#     def update_values(self):</span>
+<span class="c1">#         raise NotImplementedError</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Benjamin Alheit.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

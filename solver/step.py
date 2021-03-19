@@ -1,7 +1,7 @@
 import fenics as fe
 from abc import ABC, abstractmethod
-from .problems import StationaryProblem
-from .domain import Domain
+from solver.problems import StationaryProblem
+from solver.domain import Domain
 
 
 # TODO: Think about if dictionary is best for bcs

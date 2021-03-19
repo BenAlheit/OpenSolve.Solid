@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import fenics as fe
+# import solid_mechanics.kinnematics as kin
 from . import kinnematics as kin
 
 

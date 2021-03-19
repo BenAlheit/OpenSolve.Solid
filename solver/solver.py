@@ -1,4 +1,4 @@
-from .step import Step
+from solver.step import Step
 
 
 class SolidMechanicsSolver(object):

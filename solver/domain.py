@@ -1,9 +1,11 @@
+# coding: utf-8
+
 import fenics as fe
 from solid_mechanics.constiutive_model import ConstitutiveModelBase
 from abc import abstractmethod, ABC
 from solid_mechanics import kinnematics as kin
 from enum import Enum, auto
-from . import job_name
+from solver import job_name
 
 
 class Outputs(Enum):
@@ -132,10 +134,23 @@ class PDomain(Domain):
         self.functional = fe.inner(self.p, self.g) - fe.inner(self.constitutive_model)
 
 
-class UPDomain(UDomain, PDomain):
+class UPDomain:
+    """!
+    Discretize
+    \f$\bm{0}\f$
+
+    """
+
 
     def __init__(self, mesh: fe.Mesh, constitutive_model: ConstitutiveModelBase, u_order=1, p_order=0):
+        """!
+        blah blah blha
 
+        @param mesh:
+        @param constitutive_model:
+        @param u_order:
+        @param p_order:
+        """
         # TODO a lot here...
 
         element_v = fe.VectorElement("P", mesh.ufl_cell(), u_order)
@@ -167,8 +182,13 @@ class UPDomain(UDomain, PDomain):
             S = S_iso + J * mod_p * F_inv * F_inv.T
 
 
-        self.d_LHS = fe.inner(self.F * constitutive_model.iso_stress(u), fe.grad(ut)) * fe.dx \
+        self.d_LHS = fe.inner(self.F * S, fe.grad(ut)) * fe.dx \
                      + fe.inner(p, fe.tr(fe.nabla_grad(ut)*fe.inv(F)))
 
 
-        super().__init__(mesh, constitutive_model)
+
+    def some_method(self):
+        """!
+        Hiiii
+        @return:
+        """

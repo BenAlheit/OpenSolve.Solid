@@ -135,7 +135,7 @@ class PDomain(Domain):
 
 
 class UPDomain:
-    """!
+    """
     Discretize
     \f$\bm{0}\f$
 

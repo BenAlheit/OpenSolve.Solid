@@ -12,6 +12,9 @@ Welcome to OpenSolveSolid's documentation!
 
    modules
 
+.. math::
+
+   a
 
 Indices and tables
 ==================

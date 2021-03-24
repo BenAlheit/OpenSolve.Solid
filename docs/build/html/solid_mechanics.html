@@ -38,7 +38,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="solid_mechanics" href="modules.html" /> 
+    <link rel="next" title="solver package" href="solver.html" />
+    <link rel="prev" title="examples.quasistatic_problems.uniaxial_stvernant package" href="examples.quasistatic_problems.uniaxial_stvernant.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,7 +86,8 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">solid_mechanics</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#solid-mechanics">solid_mechanics</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">solid_mechanics package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-solid_mechanics.constiutive_model">solid_mechanics.constiutive_model module</a></li>
@@ -95,6 +97,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#solver">solver</a></li>
 </ul>
 
             
@@ -143,7 +146,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="modules.html">solid_mechanics</a> &raquo;</li>
+          <li><a href="modules.html">examples</a> &raquo;</li>
         
       <li>solid_mechanics package</li>
     
@@ -173,32 +176,42 @@
 <span id="solid-mechanics-constiutive-model-module"></span><h2>solid_mechanics.constiutive_model module<a class="headerlink" href="#module-solid_mechanics.constiutive_model" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="solid_mechanics.constiutive_model.ConstitutiveModelBase">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solid_mechanics.constiutive_model.</span></code><code class="sig-name descname"><span class="pre">ConstitutiveModelBase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">history_terms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/constiutive_model.html#ConstitutiveModelBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solid_mechanics.constiutive_model.</span></code><code class="sig-name descname"><span class="pre">ConstitutiveModelBase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3.2/library/stdtypes.html#dict" title="(in Python v3.2)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">history_terms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3.2/library/stdtypes.html#dict" title="(in Python v3.2)"><span class="pre">dict</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <dl class="py method">
 <dt id="solid_mechanics.constiutive_model.ConstitutiveModelBase.strain_energy">
-<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">strain_energy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/constiutive_model.html#ConstitutiveModelBase.strain_energy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase.strain_energy" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">strain_energy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase.strain_energy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="solid_mechanics.constiutive_model.ConstitutiveModelBase.stress">
-<code class="sig-name descname"><span class="pre">stress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/constiutive_model.html#ConstitutiveModelBase.stress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase.stress" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">stress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase.stress" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="solid_mechanics.constiutive_model.StVenant">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solid_mechanics.constiutive_model.</span></code><code class="sig-name descname"><span class="pre">StVenant</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/constiutive_model.html#StVenant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.constiutive_model.StVenant" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solid_mechanics.constiutive_model.</span></code><code class="sig-name descname"><span class="pre">StVenant</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.constiutive_model.StVenant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></code></a></p>
+<p>Blah blah</p>
+<p><img class="math" src="_images/math/fd54f7e67120134492f5852921b72743090c2ffd.png" alt="\mathbb{A}\bm{a}"/></p>
+<div class="math" id="equation-a">
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-a" title="Permalink to this equation">¶</a></span><img src="_images/math/3eb901885d0e217d51a8528c6b54927813e89167.png" alt="\bm{a} = \bm{b} + \bm{c}"/></p>
+</div><div class="math" id="equation-c">
+<p><span class="eqno">(2)<a class="headerlink" href="#equation-c" title="Permalink to this equation">¶</a></span><img src="_images/math/464938d650d43c16c572fd6c8c69285fec11d7bd.png" alt="\bm{c} = \begin{bmatrix} 1 &amp; 2 \\         2 &amp; 2 \\         3 &amp; 2 \\         \end{bmatrix}"/></p>
+</div><div class="math">
+<p><img src="_images/math/f5224ba660efca3784c34f1ce6aba20cbf1036ea.png" alt="\intomO{a}"/></p>
+</div><p>Look at equation <a class="reference internal" href="#equation-a">(1)</a> and <a class="reference internal" href="#equation-c">(2)</a>
+.</p>
 <dl class="py method">
 <dt id="solid_mechanics.constiutive_model.StVenant.strain_energy">
-<code class="sig-name descname"><span class="pre">strain_energy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/constiutive_model.html#StVenant.strain_energy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.constiutive_model.StVenant.strain_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">strain_energy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.constiutive_model.StVenant.strain_energy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="solid_mechanics.constiutive_model.StVenant.stress">
-<code class="sig-name descname"><span class="pre">stress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/constiutive_model.html#StVenant.stress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.constiutive_model.StVenant.stress" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">stress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.constiutive_model.StVenant.stress" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -208,22 +221,22 @@
 <span id="solid-mechanics-kinnematics-module"></span><h2>solid_mechanics.kinnematics module<a class="headerlink" href="#module-solid_mechanics.kinnematics" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="solid_mechanics.kinnematics.def_grad">
-<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">def_grad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/kinnematics.html#def_grad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.kinnematics.def_grad" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">def_grad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.kinnematics.def_grad" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="solid_mechanics.kinnematics.green_lagrange_strain">
-<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">green_lagrange_strain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/kinnematics.html#green_lagrange_strain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.kinnematics.green_lagrange_strain" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">green_lagrange_strain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.kinnematics.green_lagrange_strain" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="solid_mechanics.kinnematics.identity">
-<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">identity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/kinnematics.html#identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.kinnematics.identity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">identity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.kinnematics.identity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="solid_mechanics.kinnematics.right_cauchy_green">
-<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">right_cauchy_green</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solid_mechanics/kinnematics.html#right_cauchy_green"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_mechanics.kinnematics.right_cauchy_green" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_mechanics.kinnematics.</span></code><code class="sig-name descname"><span class="pre">right_cauchy_green</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_mechanics.kinnematics.right_cauchy_green" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -238,7 +251,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="modules.html" class="btn btn-neutral float-left" title="solid_mechanics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="solver.html" class="btn btn-neutral float-right" title="solver package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.quasistatic_problems.uniaxial_stvernant.html" class="btn btn-neutral float-left" title="examples.quasistatic_problems.uniaxial_stvernant package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

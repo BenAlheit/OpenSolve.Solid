@@ -25,7 +25,26 @@ class ConstitutiveModelBase(ABC):
 
 
 class StVenant(ConstitutiveModelBase):
+    """Blah blah
 
+        :math:`\\mathbb{A}\\bm{a}`
+
+        .. math:: \\bm{a} = \\bm{b} + \\bm{c}
+           :label: a
+
+        .. math:: \\bm{c} = \\begin{bmatrix} 1 & 2 \\\\ \
+        2 & 2 \\\\ \
+        3 & 2 \\\\ \
+        \\end{bmatrix}
+           :label: c
+
+
+        .. math:: \\intomO{a}
+
+        Look at equation :eq:`a` and :eq:`c`
+        .
+
+    """
     def __init__(self, parameters):
         super().__init__(parameters)
 

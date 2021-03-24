@@ -175,37 +175,40 @@
     <span class="n">lams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">domain</span><span class="o">.</span><span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">stress</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">constitutive_model</span><span class="o">.</span><span class="n">stress</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">u</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">domain</span><span class="o">.</span><span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span></div>
 
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../../examples.quasistatic_problems.uniaxial_stvernant.html#examples.quasistatic_problems.uniaxial_stvernant.uniaxial_stvenant.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 
-<span class="n">domain</span> <span class="o">=</span> <span class="n">UDomain</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span>
-                 <span class="n">StVenant</span><span class="p">({</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                           <span class="s1">&#39;lambda&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
-                 <span class="n">user_output_fn</span><span class="o">=</span><span class="n">output_fn</span><span class="p">)</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="n">UDomain</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span>
+                     <span class="n">StVenant</span><span class="p">({</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="s1">&#39;lambda&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+                     <span class="n">user_output_fn</span><span class="o">=</span><span class="n">output_fn</span><span class="p">)</span>
 
-<span class="n">lam</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="n">zero</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">pull</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;time*(lam - 1.)&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">exs</span> <span class="o">=</span> <span class="p">[</span><span class="n">pull</span><span class="p">]</span>
+    <span class="n">zero</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">pull</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;time*(lam - 1.)&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">step1</span> <span class="o">=</span> <span class="n">StaticStep</span><span class="p">(</span>
-    <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span>
-    <span class="n">dbcs</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">zero</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[0], 0)&#39;</span><span class="p">),</span>
-        <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">zero</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[1], 0)&#39;</span><span class="p">),</span>
-        <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">zero</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[2], 0)&#39;</span><span class="p">),</span>
-        <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">pull</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[0], 1.)&#39;</span><span class="p">),</span>
-    <span class="p">],</span>
-    <span class="n">t_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">t_end</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
-    <span class="n">dt0</span><span class="o">=</span><span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;dt&#39;</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-    <span class="n">expressions</span><span class="o">=</span><span class="p">[</span><span class="n">pull</span><span class="p">])</span>
+    <span class="n">step1</span> <span class="o">=</span> <span class="n">StaticStep</span><span class="p">(</span>
+        <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span>
+        <span class="n">dbcs</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">zero</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[0], 0)&#39;</span><span class="p">),</span>
+            <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">zero</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[1], 0)&#39;</span><span class="p">),</span>
+            <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">zero</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[2], 0)&#39;</span><span class="p">),</span>
+            <span class="n">fe</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">pull</span><span class="p">,</span> <span class="s1">&#39;on_boundary &amp;&amp; near(x[0], 1.)&#39;</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">t_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">t_end</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+        <span class="n">dt0</span><span class="o">=</span><span class="n">fe</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span><span class="s1">&#39;dt&#39;</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">expressions</span><span class="o">=</span><span class="p">[</span><span class="n">pull</span><span class="p">])</span>
 
-<span class="n">solver</span> <span class="o">=</span> <span class="n">SolidMechanicsSolver</span><span class="p">([</span><span class="n">step1</span><span class="p">])</span>
-<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+    <span class="n">solver</span> <span class="o">=</span> <span class="n">SolidMechanicsSolver</span><span class="p">([</span><span class="n">step1</span><span class="p">])</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">stress</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">stress</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 
 <span class="c1"># TODO Implement UP</span>
 <span class="c1"># TODO Add viscoelasticity</span>

@@ -286,16 +286,549 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solver.domain.</span></code><code class="sig-name descname"><span class="pre">UPDomain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dolfin.cpp.mesh.Mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constitutive_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="solid_mechanics.html#solid_mechanics.constiutive_model.ConstitutiveModelBase" title="solid_mechanics.constiutive_model.ConstitutiveModelBase"><span class="pre">solid_mechanics.constiutive_model.ConstitutiveModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solver.domain.UPDomain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <blockquote>
-<div><p>Discretize</p>
+<div><p>Discretize this thing here</p>
+<dl class="field-list simple">
+<dt class="field-odd">param mesh</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">param constitutive_model</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">param u_order</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">param p_order</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div></blockquote>
-<p>$m{0}
-$</p>
+<dl>
+<dt>Find <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\bm{u}</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2017-04-15&gt;
+Babel &lt;3.18&gt; and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+
+! LaTeX Error: Command \d already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.11 \newcommand{\d}{\text{d}}
+                              
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! You can't use `macro parameter character #' in math mode.
+&lt;argument&gt; \int _{\Omega _{0}} ##
+                                 1 \,\d \Omega 
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+
+LaTeX Warning: Command \d invalid in math mode on input line 12.
+
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...definable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}
+                                                  }
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...efinable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}}
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.16 
+     
+(./math.aux) [1] (./math.aux) )
+(\end occurred inside a group at level 2)
+
+### simple group (level 2) entered at line 12 ({)
+### simple group (level 1) entered at line 12 ({)
+### bottom level
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 444 bytes).
+Transcript written on math.log.
+</p>
+</div>
+ and <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">p</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2017-04-15&gt;
+Babel &lt;3.18&gt; and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+
+! LaTeX Error: Command \d already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.11 \newcommand{\d}{\text{d}}
+                              
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! You can't use `macro parameter character #' in math mode.
+&lt;argument&gt; \int _{\Omega _{0}} ##
+                                 1 \,\d \Omega 
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+
+LaTeX Warning: Command \d invalid in math mode on input line 12.
+
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...definable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}
+                                                  }
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...efinable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}}
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.16 
+     
+(./math.aux) [1] (./math.aux) )
+(\end occurred inside a group at level 2)
+
+### simple group (level 2) entered at line 12 ({)
+### simple group (level 1) entered at line 12 ({)
+### bottom level
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 440 bytes).
+Transcript written on math.log.
+</p>
+</div>
+ that satisfies</dt><dd><div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\begin{gathered}
+\ddot{\bm{u}} = \div \left( \bar{\bm{\sigma}} + p \bm{I} \right) + \bm{b} \\
+f(J) = p
+\end{gathered}
+
+</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2017-04-15&gt;
+Babel &lt;3.18&gt; and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+
+! LaTeX Error: Command \d already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.11 \newcommand{\d}{\text{d}}
+                              
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! You can't use `macro parameter character #' in math mode.
+&lt;argument&gt; \int _{\Omega _{0}} ##
+                                 1 \,\d \Omega 
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+
+LaTeX Warning: Command \d invalid in math mode on input line 12.
+
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...definable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}
+                                                  }
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...efinable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}}
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.16 
+     
+(./math.aux) [1] (./math.aux) )
+(\end occurred inside a group at level 2)
+
+### simple group (level 2) entered at line 12 ({)
+### simple group (level 1) entered at line 12 ({)
+### bottom level
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 704 bytes).
+Transcript written on math.log.
+</p>
+</div>
+</dd>
+<dt>or</dt><dd><div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\begin{gathered}
+\ddot{\bm{u}} = \div \left( \bar{\bm{\sigma}} + p \bm{I} \right) + \bm{b} \\
+(J-1)^2 = 0
+\end{gathered}
+
+</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2017-04-15&gt;
+Babel &lt;3.18&gt; and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+
+! LaTeX Error: Command \d already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.11 \newcommand{\d}{\text{d}}
+                              
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! You can't use `macro parameter character #' in math mode.
+&lt;argument&gt; \int _{\Omega _{0}} ##
+                                 1 \,\d \Omega 
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+
+LaTeX Warning: Command \d invalid in math mode on input line 12.
+
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...definable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}
+                                                  }
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...efinable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}}
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.16 
+     
+(./math.aux) [1] (./math.aux) )
+(\end occurred inside a group at level 2)
+
+### simple group (level 2) entered at line 12 ({)
+### simple group (level 1) entered at line 12 ({)
+### bottom level
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 716 bytes).
+Transcript written on math.log.
+</p>
+</div>
+</dd>
+<dt>Introduce</dt><dd><div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\intom0{\bm{w} \cdot\ddot{\bm{u}} } + \intom0{\int\Grad\bm{w} : \bm{F}[\bar{\bm{S}} + Jp\bm{C}^{-1}]} = \bm{b}
+
+</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2017-04-15&gt;
+Babel &lt;3.18&gt; and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+
+! LaTeX Error: Command \d already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.11 \newcommand{\d}{\text{d}}
+                              
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...                                              
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! You can't use `macro parameter character #' in math mode.
+&lt;argument&gt; \int _{\Omega _{0}} ##
+                                 1 \,\d \Omega 
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+
+LaTeX Warning: Command \d invalid in math mode on input line 12.
+
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...definable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}
+                                                  }
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Extra }, or forgotten $.
+\&#64;argdef ...efinable #1{\&#64;yargdef #1\&#64;ne {#2}{#3}}
+                                                  
+l.12 ...tom0}[1]{\int_{\Omega_{0}} #1 \,\d \Omega}
+                                                  
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.16 
+     
+(./math.aux)
+! Undefined control sequence.
+&lt;argument&gt; ...t {\bm {u}} } + \intom 0{\int \Grad 
+                                                  \bm {w} : \bm {F}[\bar {\b...
+l.20 ...{S}} + Jp\bm{C}^{-1}]} = \bm{b}\end{split}
+                                                  
+! Undefined control sequence.
+&lt;argument&gt; ...t {\bm {u}} } + \intom 0{\int \Grad 
+                                                  \bm {w} : \bm {F}[\bar {\b...
+l.20 ...{S}} + Jp\bm{C}^{-1}]} = \bm{b}\end{split}
+                                                  
+[1] (./math.aux) )
+(\end occurred inside a group at level 2)
+
+### simple group (level 2) entered at line 12 ({)
+### simple group (level 1) entered at line 12 ({)
+### bottom level
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 748 bytes).
+Transcript written on math.log.
+</p>
+</div>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="solver.domain.UPDomain.some_method">
 <code class="sig-name descname"><span class="pre">some_method</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#solver.domain.UPDomain.some_method" title="Permalink to this definition">¶</a></dt>
-<dd><p>!
-Hiiii
-&#64;return:</p>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A thing</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

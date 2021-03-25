@@ -136,21 +136,35 @@ class PDomain(Domain):
 
 class UPDomain:
     """
-    Discretize
-    \f$\bm{0}\f$
+     Discretize this thing here
 
-    """
+     :param mesh:
+     :param constitutive_model:
+     :param u_order:
+     :param p_order:
+
+Find :math:`\\bm{u}` and :math:`p` that satisfies
+     .. math::
+         \\begin{gathered}
+         \\ddot{\\bm{u}} = \\div \\left( \\bar{\\bm{\\sigma}} + p \\bm{I} \\right) + \\bm{b} \\\\
+         f(J) = p
+         \\end{gathered}
+or
+     .. math::
+         \\begin{gathered}
+         \\ddot{\\bm{u}} = \\div \\left( \\bar{\\bm{\\sigma}} + p \\bm{I} \\right) + \\bm{b} \\\\
+         (J-1)^2 = 0
+         \\end{gathered}
+Introduce
+     .. math::
+         \\intom0{\\bm{w} \\cdot\\ddot{\\bm{u}} } + \\intom0{\\int\\Grad\\bm{w} : \\bm{F}[\\bar{\\bm{S}} + Jp\\bm{C}^{-1}]} = \\bm{b}
+
+
+         """
 
 
     def __init__(self, mesh: fe.Mesh, constitutive_model: ConstitutiveModelBase, u_order=1, p_order=0):
-        """!
-        blah blah blha
 
-        @param mesh:
-        @param constitutive_model:
-        @param u_order:
-        @param p_order:
-        """
         # TODO a lot here...
 
         element_v = fe.VectorElement("P", mesh.ufl_cell(), u_order)
@@ -188,7 +202,7 @@ class UPDomain:
 
 
     def some_method(self):
-        """!
-        Hiiii
-        @return:
+        """
+
+        :return: A thing
         """

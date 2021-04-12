@@ -78,7 +78,7 @@ class StaticStep(Step):
                  expressions: [fe.Expression] = [],
                  u0: fe.Expression = None,
                  solver_parameters=None):
-        super().__init__(dt0, dbcs, domain, expressions)
+        super().__init__(dt0, dbcs, domain, expressions, solver_parameters=solver_parameters)
 
         self.t_start = t_start
         self.t_end = t_end
@@ -99,11 +99,14 @@ class StaticStep(Step):
         ut = self._domain.ut
         F, F0 = self._domain.F, self._domain.F0
 
-        constitutive_model = self._domain.constitutive_model
+        # constitutive_model = self._domain.constitutive_model
 
-        self.d_LHS = fe.inner(F * constitutive_model.stress(u), fe.grad(ut)) * fe.dx
+        self.d_LHS = self.domain.d_LHS
 
-        self.d_RHS = (fe.inner(fe.Constant((0., 0., 0.)), ut) * fe.dx)
+        self.d_RHS = self.domain.d_RHS
+        # self.d_LHS = fe.inner(F * constitutive_model.stress(u), fe.grad(ut)) * fe.dx
+        #
+        # self.d_RHS = (fe.inner(fe.Constant((0., 0., 0.)), ut) * fe.dx)
         # self.d_RHS = (fe.inner(bf, ut) * fe.dx)
         # + fe.inner(self.bcs['trac'], ut) * fe.ds)
 

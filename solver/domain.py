@@ -82,6 +82,10 @@ class UDomain(Domain):
                               Outputs.strain: self.write_strain,
                               Outputs.displacement: self.write_u}
 
+        self.d_LHS = fe.inner(self.F * constitutive_model.stress(self.u), fe.grad(self.ut)) * fe.dx
+
+        self.d_RHS = (fe.inner(fe.Constant((0., 0., 0.)), self.ut) * fe.dx)
+
     def update_values(self):
         self.u0.assign(self.u)
         self.v0.assign(self.v)
@@ -135,7 +139,7 @@ class PDomain(Domain):
 
 
 class UPDomain:
-    """
+    r"""
      Discretize this thing here
 
      :param mesh:
@@ -143,25 +147,27 @@ class UPDomain:
      :param u_order:
      :param p_order:
 
-Find :math:`\\bm{u}` and :math:`p` that satisfies
+Find :math:`\bm{u}` and :math:`p` that satisfies
      .. math::
-         \\begin{gathered}
-         \\ddot{\\bm{u}} = \\div \\left( \\bar{\\bm{\\sigma}} + p \\bm{I} \\right) + \\bm{b} \\\\
+         \begin{gathered}
+         \ddot{\bm{u}} = \div \left( \bar{\bm{\sigma}} + p \bm{I} \right) + \bm{b} \\
          f(J) = p
-         \\end{gathered}
+         \end{gathered}
 or
      .. math::
-         \\begin{gathered}
-         \\ddot{\\bm{u}} = \\div \\left( \\bar{\\bm{\\sigma}} + p \\bm{I} \\right) + \\bm{b} \\\\
-         (J-1)^2 = 0
-         \\end{gathered}
+         \begin{gathered}
+         \ddot{\bm{u}} = \div \left( \bar{\bm{\sigma}} + p \bm{I} \right) + \bm{b} \\
+         J^2-1 = 0
+         \end{gathered}
 Introduce
+    If compressible:
      .. math::
-         \\intom0{\\bm{w} \\cdot\\ddot{\\bm{u}} } + \\intom0{\\int\\Grad\\bm{w} : \\bm{F}[\\bar{\\bm{S}} + Jp\\bm{C}^{-1}]} = \\bm{b}
-
+         \intomO{\bm{w} \cdot\ddot{\bm{u}} } + \intomO{\Grad\bm{w} : \bm{F}[\bar{\bm{S}} + Jp\bm{C}^{-1}]} + \intomO{q (f(J) - p)}  = 0
+Else
+     .. math::
+         \intomO{\bm{w} \cdot\ddot{\bm{u}} } + \intomO{\Grad\bm{w} : \bm{F}[\bar{\bm{S}} + Jp\bm{C}^{-1}]} + \intomO{q(J-1)}  = 0
 
          """
-
 
     def __init__(self, mesh: fe.Mesh, constitutive_model: ConstitutiveModelBase, u_order=1, p_order=0):
 
@@ -169,36 +175,40 @@ Introduce
 
         element_v = fe.VectorElement("P", mesh.ufl_cell(), u_order)
         element_s = fe.FiniteElement("DG", mesh.ufl_cell(), p_order)
-        mixed_element = fe.MixedElement([element_v, element_v, element_s])
+        # mixed_element = fe.MixedElement([element_v, element_v, element_s])
+        mixed_element = fe.MixedElement([element_v, element_s])
 
-        W = fe.FunctionSpace(mesh, mixed_element)
+        self.W = fe.FunctionSpace(mesh, mixed_element)
 
-        w = fe.Function(W)
-        u, v, p = fe.split(w)
-        w0 = fe.Function(W)
-        u0, v0, p0 = fe.split(w0)
-        ut, vt, pt = fe.TestFunctions(W)
+        self.V, self.Q = self.W.split()
+
+        self.w = fe.Function(self.W)
+        self.u, self.p = fe.split(self.w)
+        w0 = fe.Function(self.W)
+        self.u0, self.p0 = fe.split(w0)
+        self.ut, self.pt = fe.TestFunctions(self.W)
 
 
-        F = kin.def_grad(self.u)
-        F0 = kin.def_grad(self.u0)
+        self.F = kin.def_grad(self.u)
+        self.F0 = kin.def_grad(self.u0)
 
-        S_iso = constitutive_model.iso_stress(u)
-        mod_p = constitutive_model.p(u)
-        J = fe.det(F)
-        F_inv = fe.inv(F)
+        S_iso = constitutive_model.iso_stress(self.u)
+        mod_p = constitutive_model.p(self.u)
+        J = fe.det(self.F)
+        F_inv = fe.inv(self.F)
 
         if mod_p is None:
-            mod_p = J - 1.
-            S = S_iso
+            mod_p = J**2 - 1.
         else:
+            mod_p -= self.p
 
-            S = S_iso + J * mod_p * F_inv * F_inv.T
+        S = S_iso + J * self.p * F_inv * F_inv.T
 
+        self.d_LHS = fe.inner(fe.grad(self.ut), self.F * S) * fe.dx \
+                     + fe.inner(mod_p, self.pt) * fe.dx
+                     # + fe.inner(mod_p, fe.tr(fe.nabla_grad(self.ut)*fe.inv(self.F))) * fe.dx
 
-        self.d_LHS = fe.inner(self.F * S, fe.grad(ut)) * fe.dx \
-                     + fe.inner(p, fe.tr(fe.nabla_grad(ut)*fe.inv(F)))
-
+        self.d_RHS = (fe.inner(fe.Constant((0., 0., 0.)), self.ut) * fe.dx)
 
 
     def some_method(self):

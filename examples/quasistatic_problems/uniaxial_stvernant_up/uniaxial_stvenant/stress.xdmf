@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+<Xdmf Version="3.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <Domain>
+    <Grid Name="TimeSeries_f_107" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/0/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/0/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.10000000000000001" />
+        <Attribute Name="f_107" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/0</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_180" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/1/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/1/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.20000000000000001" />
+        <Attribute Name="f_180" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/1</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_250" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/2/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/2/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.30000000000000004" />
+        <Attribute Name="f_250" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/2</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_320" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/3/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/3/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.40000000000000002" />
+        <Attribute Name="f_320" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/3</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_390" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/4/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/4/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.5" />
+        <Attribute Name="f_390" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/4</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_460" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/5/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/5/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.59999999999999998" />
+        <Attribute Name="f_460" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/5</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_530" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/6/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/6/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.69999999999999996" />
+        <Attribute Name="f_530" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/6</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_600" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/7/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/7/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.79999999999999993" />
+        <Attribute Name="f_600" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/7</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_670" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/8/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/8/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.89999999999999991" />
+        <Attribute Name="f_670" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/8</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_740" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/9/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/9/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.99999999999999989" />
+        <Attribute Name="f_740" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/9</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+    <Grid Name="TimeSeries_f_810" GridType="Collection" CollectionType="Temporal">
+      <Grid Name="mesh" GridType="Uniform">
+        <Topology NumberOfElements="48" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="48 4" NumberType="UInt" Format="HDF">stress.h5:/Mesh/10/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="27 3" Format="HDF">stress.h5:/Mesh/10/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="1.0999999999999999" />
+        <Attribute Name="f_810" AttributeType="Tensor" Center="Node">
+          <DataItem Dimensions="27 9" Format="HDF">stress.h5:/VisualisationVector/10</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+  </Domain>
+</Xdmf>

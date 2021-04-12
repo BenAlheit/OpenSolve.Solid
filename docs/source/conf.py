@@ -62,8 +62,8 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 imgmath_latex_preamble = """
-\\newcommand{\\d}{\\text{d}}
-\\newcommand{\\intom0}[1]{\\int_{\\Omega_{0}} #1 \\,\\d \\Omega}
+\\renewcommand{\\d}{\\text{d}}
+\\newcommand{\\intomO}[1]{\\int_{\\Omega_{0}} #1 \\, d \\Omega}
 \\renewcommand{\\div}{\\text{div}}
 \\newcommand{\\grad}{\\text{grad}}
 \\newcommand{\\Grad}{\\text{Grad}}

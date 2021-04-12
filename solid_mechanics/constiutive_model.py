@@ -23,6 +23,44 @@ class ConstitutiveModelBase(ABC):
     # def tangent(self):
     #     raise NotImplementedError
 
+class IsoConstitutiveModelBase(ConstitutiveModelBase):
+    pass
+
+class IsoStVenant(ConstitutiveModelBase):
+    """Blah blah
+
+        :math:`\\mathbb{A}\\bm{a}`
+
+        .. math:: \\bm{a} = \\bm{b} + \\bm{c}
+           :label: a
+
+        .. math:: \\bm{c} = \\begin{bmatrix} 1 & 2 \\\\ \
+        2 & 2 \\\\ \
+        3 & 2 \\\\ \
+        \\end{bmatrix}
+           :label: c
+
+
+
+    """
+    def __init__(self, parameters):
+        super().__init__(parameters)
+
+    def strain_energy(self, u):
+        pass
+
+    def stress(self, u):
+        pass
+
+    def iso_stress(self, u):
+        E = kin.iso_green_lagrange_strain(u)
+
+        return 2 * self._parameters['mu'] * E
+
+    def p(self, u):
+        return None
+
+
 
 class StVenant(ConstitutiveModelBase):
     """Blah blah
@@ -39,10 +77,6 @@ class StVenant(ConstitutiveModelBase):
            :label: c
 
 
-        .. math:: \\intomO{a}
-
-        Look at equation :eq:`a` and :eq:`c`
-        .
 
     """
     def __init__(self, parameters):
